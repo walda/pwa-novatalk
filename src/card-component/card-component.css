@@ -31,7 +31,7 @@
 
 .card-article-image img {
     width: 240px;
-    height: 240px;
+    height: 160px;
     object-fit: cover;
     box-sizing: border-box;
 }
@@ -44,7 +44,7 @@
     }
 
     .card-article-image img {
-        max-height: 160px;
+        width: 240px;
     }
 
     .card-container:hover {
@@ -59,11 +59,5 @@
         background-color: #666666;
         position: relative;
         top: 0;
-    }
-
-    .card-article-header.text {
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-    }
-    
+    }    
 }

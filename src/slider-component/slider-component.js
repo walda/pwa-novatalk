@@ -8,8 +8,7 @@ export default class Slider extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
-        this.state = { currentSlide: this.props.slides[0] || [], slides: this.props.slides };
+        this.state = { currentSlide: this.props.children[0].props };
         this.intervalId = setInterval(() => {
             this.counter++;
             this.showNextImage();
@@ -23,13 +22,13 @@ export default class Slider extends React.Component {
     }
 
     showNextImage() {
-        this.setState({ currentSlide: this.props.slides[this.counter % this.props.slides.length] });
+        this.setState({ currentSlide: this.props.children[this.counter % this.props.children.length].props });
     }
 
     createButtons() {
         const buttons = [];
-        for(let i=0; i < this.props.slides.length; i++) {
-            const style = this.counter % this.props.slides.length === i 
+        for(let i=0; i < this.props.children.length; i++) {
+            const style = this.counter % this.props.children.length === i 
                                 ? "slider-buttons active" : "slider-buttons inactive";
             buttons.push(<div id={i} key={i} className={style} onClick={() => this.showSlide(i)} ></div>);
         }
@@ -43,7 +42,7 @@ export default class Slider extends React.Component {
                     <div className="slider-header">
                         {this.state.currentSlide.title}
                     </div>
-                </div>        
+                </div> 
                 <div className="slider-footer">
                     <div className="slider-buttons-container">
                         {this.createButtons()}

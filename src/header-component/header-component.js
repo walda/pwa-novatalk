@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './search-component.css';
+import './header-component.css';
 
-export default class Search extends React.Component {
+export default class Header extends React.Component {
 
 
     render() {
