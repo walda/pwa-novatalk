@@ -1,0 +1,23 @@
+
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px;
+  }
+  
+  .max-container {
+    max-width: 480px;
+  }
+  
+  @media only screen and (min-width: 480px) {
+    .max-container {
+      max-width: 1260px;
+      margin: auto auto;
+    }
+    .container {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 280px;
+      justify-content: space-evenly;
+    }
+  }

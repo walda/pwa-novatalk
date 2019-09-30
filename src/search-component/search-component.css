@@ -1,0 +1,38 @@
+.search-container {
+    display: flex;
+    background-color: #000;
+    color: #FFF;
+    height: 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container input {
+    background-color:  	#999999;
+    color: #FFF;
+    border-radius: 50px;
+    float: right;
+}
+
+.search-title {
+    flex-grow: 1;
+}
+
+.search-input {
+    flex-grow: 1;
+}
+
+@media only screen and (min-width: 480px) {
+    .search-container input {
+        width: 50%;
+    }
+
+    .search-title {
+        font-size: 32px;
+    }
+
+    .search-container {
+        height: 80px;
+    }
+}
