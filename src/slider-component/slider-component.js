@@ -15,6 +15,10 @@ export default class Slider extends React.Component {
         }, 5000);
     }
 
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
+
     showSlide(slideNumber) {
         this.counter = slideNumber;
         this.showNextImage();

@@ -13,6 +13,7 @@ class MainComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = { newsList: [], slides: [] }
+    this.openNews.bind(this);
   }
 
   componentDidMount() {
@@ -26,9 +27,15 @@ class MainComponent extends React.Component {
     .subscribe((data) => this.setState({ slides: data.articles.slice(0, 3) }));
   }
   
-  openNews(url) {
-    console.log("Open " + url);
+  openNews = (url) => {
+    window.location.href = url;
   }
+
+  onSearch = (event) => {
+    if(event.keyCode === 13) {
+        this.props.history.push("/search?q=" + event.target.value);
+    }
+  };
   
   createNews() {    
     let news = [];
@@ -42,6 +49,7 @@ class MainComponent extends React.Component {
             image={currentNews.urlToImage}
             text={currentNews.title}
             alt={currentNews.title}
+            url={currentNews.url}
             />
           </div>);
     }
@@ -62,7 +70,7 @@ class MainComponent extends React.Component {
 
   render() {
       return <div className="max-container">
-      <Header />
+      <Header onSearch={this.onSearch} />
       {this.createSlides()}
       <div className="container max-container">
           {this.createNews()}

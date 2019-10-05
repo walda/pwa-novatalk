@@ -5,7 +5,7 @@ export default class Card extends React.Component {
 
 
     _onClick = () => {
-        this.props.click("aaa");
+        this.props.click(this.props.url);
     } 
 
     render() {
