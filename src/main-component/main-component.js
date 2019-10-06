@@ -5,6 +5,7 @@ import Slide from '../slider-component/slide-component';
 import Header from '../header-component/header-component';
 import { withRestClient } from '../services/rest-client';
 import { take } from 'rxjs/operators';
+import { NEWS_API_KEY, NEWS_API_URL } from '../environment';
 
 import './main-component.css';
 
@@ -17,12 +18,11 @@ class MainComponent extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.restClient.get("http://localhost:4000/v2/everything?q=bitcoin&from=2019-08-24&sortBy=publishedAt&apiKey=2ef288ecdb6c4859bace45624242fcca")
-    this.props.restClient.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=2ef288ecdb6c4859bace45624242fcca")
+    this.props.restClient.get(`${NEWS_API_URL}/top-headlines?country=us&apiKey=${NEWS_API_KEY}`)
     .pipe(take(1))
     .subscribe((data) => this.setState({ newsList: data.articles }));
 
-    this.props.restClient.get("https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=2ef288ecdb6c4859bace45624242fcca")
+    this.props.restClient.get(`${NEWS_API_URL}/top-headlines?country=us&category=sports&apiKey=${NEWS_API_KEY}`)
     .pipe(take(1))
     .subscribe((data) => this.setState({ slides: data.articles.slice(0, 3) }));
   }

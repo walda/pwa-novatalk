@@ -6,6 +6,10 @@ import './header-component.css';
 
 class Header extends React.Component {
 
+    _onChange = (event) => {
+        this.setState({ searchText: event.target.value });
+    };
+
     render() {
         return <div className="header-container">
             <div className="header-title">
@@ -14,7 +18,7 @@ class Header extends React.Component {
                 </Link>
             </div>
             <div className="header-input">
-                <input type="text" placeholder="Search ..." onKeyDown={this.props.onSearch} />
+                <input defaultValue={this.props.searchText} type="text" placeholder="Search ..." onKeyDown={this.props.onSearch} />
                 </div>            
         </div>;
     } 
